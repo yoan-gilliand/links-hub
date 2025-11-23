@@ -1,25 +1,56 @@
 # Links Hub
 
-A simple, elegant, and customizable link-in-bio page built with Next.js, TypeScript, and Tailwind CSS. This project serves as a personal landing page to showcase all your important links in one place.
+A simple, elegant, and customizable link-in-bio page built with Next.js, TypeScript, and Tailwind CSS. This project serves as a personal landing page to showcase all your important links in one place, with a strong focus on dynamic metadata generation for excellent SEO.
+
+<p align="center">
+  <a href="https://links.yoan-gilliand.ch" target="_blank" style="
+      display: inline-block;
+      background: linear-gradient(135deg, #7f00ff, #e100ff);
+      color: white;
+      padding: 0.65rem 1.4rem;
+      border-radius: 0.75rem;
+      font-weight: bold;
+      text-decoration: none;
+      font-family: 'Segoe UI', sans-serif;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+  " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.25)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+    🌐 Live Demo
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://i.postimg.cc/DyghJb42/links-hub-preview.png" target="_blank">
+    <img src="https://i.postimg.cc/DyghJb42/links-hub-preview.png" alt="Project Preview" width="450" style="
+        border-radius: 0.75rem;
+        box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        transition: transform 0.3s;
+    " onmouseover="this.style.transform='scale(1.03)';" onmouseout="this.style.transform='scale(1)';"/>
+  </a>
+</p>
 
 ## Features
 
--   **Minimalist Design**: Clean and focused UI.
--   **Customizable**: Easily update your links, social media, and personal information through a single data file.
--   **Built with Next.js 15**: Leverages the latest features of the App Router.
--   **Styled with Tailwind CSS**: Utility-first CSS for rapid UI development.
--   **SEO Optimized**: Includes metadata generation, `robots.txt`, and `sitemap.xml`.
+-   **Dynamic Metadata**: SEO and social media tags are generated automatically from a single data file.
+-   **Centralized Data**: Easily update your links, socials, and personal info in one place (`app/data.ts`).
+-   **Modern Tech Stack**: Built with Next.js 16 and TypeScript.
+-   **Styling**: Styled with Tailwind CSS and pre-configured with `shadcn/ui` and `Geist` font.
+-   **SEO Ready**: Comes with `robots.txt` and `sitemap.xml` files.
+
+## Technology Stack
+
+-   **Framework**: Next.js 16
+-   **Language**: TypeScript
+-   **Styling**: Tailwind CSS, shadcn/ui
+-   **UI Components**: Radix UI
+-   **Fonts**: Geist Sans & Mono
 
 ## Getting Started
 
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
-
 ### Prerequisites
 
-Make sure you have the following installed on your system:
-
--   [Node.js](https://nodejs.org/en/) (v18.x or later recommended)
--   [npm](https://www.npmjs.com/), [yarn](https://yarnpkg.com/), or [pnpm](https://pnpm.io/)
+-   Node.js (v18.x or later)
+-   npm, yarn, or pnpm
 
 ### Installation
 
@@ -39,59 +70,56 @@ Make sure you have the following installed on your system:
     npm run dev
     ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see your site.
 
-## Configuration
+## Configuration Guide
 
-All personal data, links, and social media information are managed in a single file for easy customization.
+This project is designed for easy configuration by editing a small number of files.
 
-1.  **Open `app/data.ts`:**
-    This file contains the `DATA` object which holds all the content for your page.
+### 1. Update Your Personal Data (`app/data.ts`)
 
-2.  **Update the content:**
-    Modify the values in the `DATA` object to match your personal information:
-    -   `name`: Your name.
-    -   `title`: Your job title or a short headline.
-    -   `bio`: A short biography.
-    -   `avatarUrl`: A direct link to your profile picture.
-    -   `links`: An array of your important links (e.g., portfolio, blog).
-    -   `socials`: An array of your social media profiles.
+This is the most important step. Open **`app/data.ts`** and edit the `DATA` object. All site content, metadata, and icons are derived from this file.
 
-3.  **Update Favicon:**
-    Replace the `app/favicon.ico` file with your own favicon.
+-   `name`: Your full name.
+-   `title`: Your professional title or a short headline.
+-   `bio`: A short biography used for the page and for SEO descriptions.
+-   `avatarUrl`: **Crucial.** A direct URL to your avatar image. This URL is used for:
+    -   The profile picture on the page.
+    -   The site's **favicon**.
+    -   The preview image for social media (Open Graph & Twitter cards).
+-   `links`: An array of your main links (e.g., portfolio, blog).
+-   `socials`: An array of your social media profile links.
 
-4.  **Update SEO and Metadata:**
-    -   The metadata in `app/layout.tsx` is generated dynamically from `app/data.ts`.
-    -   Update `public/sitemap.xml` with the correct `loc` (your domain) and `lastmod` date.
-    -   Update `public/robots.txt` to point to your sitemap URL.
+### 2. Manually Edit SEO Files (`public/`)
+
+The `robots.txt` and `sitemap.xml` files are **not** automatically generated. You must edit them manually.
+
+1.  **`public/sitemap.xml`**:
+    -   Open the file and change the `<loc>` URL to your final domain name.
+    -   Update the `<lastmod>` date to reflect when you last made significant changes.
+
+    ```xml
+    <url>
+      <loc>https://your-domain.com</loc>
+      <lastmod>YYYY-MM-DD</lastmod>
+    </url>
+    ```
+
+2.  **`public/robots.txt`**:
+    -   Open the file and update the `Sitemap` URL to point to your production sitemap.
+
+    ```
+    Sitemap: https://your-domain.com/sitemap.xml
+    ```
+
+### 3. Advanced Metadata (`app/layout.tsx`)
+
+While most of metadata comes from `data.ts`, you can fine-tune SEO keywords in **`app/layout.tsx`**. The `keywords` array in the `metadata` object can be expanded with terms relevant to your niche.
 
 ## Deployment to Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+1.  **Push to Git:** Push your customized code to a GitHub, GitLab, or Bitbucket repository.
+2.  **Import to Vercel:** On your Vercel dashboard, import the Git repository.
+3.  **Deploy:** Vercel will auto-detect the Next.js 16 configuration and deploy the project. No special environment variables are needed.
 
-1.  **Push to a Git Provider:**
-    Push your code to a repository on GitHub, GitLab, or Bitbucket.
-
-2.  **Import Project on Vercel:**
-    -   Go to your Vercel dashboard and click "Add New... > Project".
-    -   Import the Git repository you just created.
-
-3.  **Configure and Deploy:**
-    -   Vercel will automatically detect that you are using Next.js and configure the project settings.
-    -   You do not need to configure any environment variables unless you've added them yourself.
-    -   Click the "Deploy" button.
-
-Your site will be deployed, and you'll be provided with a live URL. Any subsequent pushes to your main branch will automatically trigger a new deployment.
-
-## Built With
-
--   [Next.js](https://nextjs.org/) - The React Framework for the Web
--   [React](https://react.dev/) - A JavaScript library for building user interfaces
--   [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript at Any Scale
--   [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
--   [shadcn/ui](https://ui.shadcn.com/) - Beautifully designed components
--   [Geist](https://vercel.com/font) - Vercel's signature font family
-
----
-
-Happy coding!
+Your site is now live. Subsequent pushes to the main branch will trigger automatic redeployments.
