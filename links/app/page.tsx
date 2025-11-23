@@ -25,38 +25,20 @@
 
 import * as motion from "framer-motion/client";
 import { ArrowUpRight, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "./data";
 
 export default function Page() {
 	// -----------------------------------------------------------
-	// THEME STATE
-	// Stores the current theme (light/dark). Default is light.
-	// This also updates <html> class for Tailwind dark mode.
-	// -----------------------------------------------------------
-	const [theme, setTheme] = useState("light");
-
-	useEffect(() => {
-		// On first load, read theme from localStorage
-		const savedTheme = localStorage.getItem("theme") || "light";
-		setTheme(savedTheme);
-
-		// Apply "dark" class to <html> if needed
-		document.documentElement.classList.toggle("dark", savedTheme === "dark");
-	}, []);
-
-	// -----------------------------------------------------------
 	// THEME TOGGLER
 	// Flips between light/dark mode and saves preference.
 	// -----------------------------------------------------------
+	const { theme, setTheme } = useTheme();
+
 	const toggleTheme = () => {
-		const newTheme = theme === "light" ? "dark" : "light";
-
-		setTheme(newTheme);
-		localStorage.setItem("theme", newTheme);
-
-		document.documentElement.classList.toggle("dark", newTheme === "dark");
+		setTheme(theme === "light" ? "dark" : "light");
 	};
 
 	// -----------------------------------------------------------

@@ -24,6 +24,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 import { DATA } from "./data";
 
 /* -----------------------------------------------------------
@@ -191,26 +192,14 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<head>
-				{/* Theme color for light mode */}
-				<meta
-					name="theme-color"
-					content="#ffffff"
-					media="(prefers-color-scheme: light)"
-				/>
-
-				{/* Theme color for dark mode */}
-				<meta
-					name="theme-color"
-					content="#09090b"
-					media="(prefers-color-scheme: dark)"
-				/>
-			</head>
-
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
-				{children}
+			<body>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="light"
+					enableSystem={false}
+				>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);
