@@ -1,7 +1,14 @@
 {
-	"name": "links",
+	"name": "links-hub",
 	"version": "1.0.0",
 	"private": true,
+	"author": "Yoan Gilliand <contact@yoan-gilliand.ch>",
+	"homepage": "https://yoan-gilliand.ch",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yoan-gilliand/links-hub"
+	},
+	"license": "MIT",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",

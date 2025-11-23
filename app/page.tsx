@@ -26,7 +26,6 @@
 import * as motion from "framer-motion/client";
 import { ArrowUpRight, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "./data";
 
@@ -298,9 +297,19 @@ export default function Page() {
 				</motion.div>
 
 				{/* Footer */}
+				{/* NOTE: Do not edit the name "Yoan Gilliand" below. The rest of the footer can be customized freely. */}
 				<motion.div className="mt-16 text-center">
 					<p className="text-xs text-gray-500 dark:text-grey-400">
-						© {new Date().getFullYear()} {DATA.name}. All rights reserved.
+						Made by{" "}
+						<a
+							href="https://yoan-gilliand.ch"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="underline font-semibold"
+						>
+							Yoan Gilliand
+						</a>{" "}
+						• © {new Date().getFullYear()}
 					</p>
 				</motion.div>
 			</motion.main>
