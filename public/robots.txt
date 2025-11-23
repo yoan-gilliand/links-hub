@@ -1,0 +1,10 @@
+# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+#
+# This file should be placed in the root of your web server.
+#
+# By default, all user agents are allowed to crawl all pages.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://links.yoan-gilliand.ch/sitemap.xml
