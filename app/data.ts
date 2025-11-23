@@ -28,6 +28,7 @@ export const DATA = {
 	avatarUrl: "https://i.ibb.co/35K3gYrm/1755208886012-copy.jpg", // Profile image URL
 	bio: "Building polished digital experiences. Obsessed with performance, accessibility, and pixel-perfect design.", // Short description about you
 	location: "Switzerland", // Your location
+	defaultTheme: "dark", // Default website theme (light or dark)
 
 	/**
 	 * MAIN LINKS
