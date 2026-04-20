@@ -25,10 +25,10 @@ export const DATA = {
 	initials: "YG", // Initials shown in some UI components
 	handle: "@yoan-gilliand", // Your handle or username
 	title: "Software Engineering Student • Founder of TypstMe", // Your job title or role
-	avatarUrl: "https://i.ibb.co/35K3gYrm/1755208886012-copy.jpg", // Profile image URL
+	avatarUrl: "https://i.ibb.co/VW0496c4/PP-Colors.jpg"", // Profile image URL
 	bio: "Building polished digital experiences. Obsessed with performance, accessibility, and pixel-perfect design.", // Short description about you
 	location: "Switzerland", // Your location
-	defaultTheme: "dark", // Default website theme (light or dark)
+	defaultTheme: "light", // Default website theme (light or dark)
 
 	/**
 	 * MAIN LINKS
